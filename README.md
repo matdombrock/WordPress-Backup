@@ -3,20 +3,15 @@
 Automates WordPress backups from the CLI
 ```bash
 #!/bin/bash
-
 name=<TITLE> #used only for file names
-
 #DB CONNECTION INFO
 password=<DATABASE USER PASSWORD>
 db_name=<DATABASE NAME>
-
 #config options
 web_root=/var/www/html/
 temp_output=/var/www/html/backup/ #one-time download backup location. Should be on web root.
 output=/root/ #main backup location. Should not be avail to webroot.
-
 touch ${temp_output}/index.html
-
 read -p "Do you want to purge the old temporary backups? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -24,9 +19,7 @@ then
     # do dangerous stuff
     rm -R ${temp_output}/*
 fi
-
 t=$(date +%s)
-
 d=$(date)
 mkdir ${t}
 touch ${t}/"${d}"
